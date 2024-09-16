@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 }
 
@@ -59,6 +59,30 @@ h1{
     flex-wrap: wrap;
     gap:  4%;
 }
+
+ 
+  /* form */
+  .container {
+    max-width: 800px;
+    color: #ffffff;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label, input, textarea {
+    margin-bottom: 10px;
+  }
+  #resumeDisplay {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+
 
 @media (max-width: 767px) {
 #resume {
