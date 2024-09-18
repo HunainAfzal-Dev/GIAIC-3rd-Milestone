@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <main class="main-wrapper">
       <div id="resume">
         <div class="resume_Top">
           <img
@@ -23,7 +24,7 @@
           <section id="personal-info">
             <h1>Hunain Afzal</h1>
             <p>kajhunain@gmail.com</p>
-            <p> 03** 1245635</p>
+            <p>03** 1245635</p>
           </section>
         </div>
         <div class="resume_bottom">
@@ -54,35 +55,96 @@
       <!-- form  -->
       <div class="container">
         <h1>Dynamic Resume Builder</h1>
+
         <form id="resumeForm">
           <h2>Personal Information</h2>
-          <label for="name">Name:</label>
-          <input type="text" id="name" required>
-          
-          <label for="email">Email:</label>
-          <input type="email" id="email" required>
-      
+          <div class="personal-info fields-main">
+            <div>
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div>
+              <label for="phone">Phone:</label>
+              <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone Number"
+                required
+              />
+            </div>
+          </div>
+
           <h2>Education</h2>
-          <label for="education">Degree:</label>
-          <input type="text" id="education" required>
-      
+          <div class="education-info fields-main">
+            <div>
+              <label for="degree">Degree:</label>
+              <input
+                type="text"
+                id="degree"
+                placeholder="Enter your degree"
+                required
+              />
+            </div>
+            <div>
+              <label for="institution">Institution:</label>
+              <input
+                type="text"
+                id="institution"
+                placeholder="Enter your institute"
+                required
+              />
+            </div>
+          </div>
+
           <h2>Work Experience</h2>
-          <label for="workExperience">Job Title:</label>
-          <input type="text" id="workExperience" required>
-      
+
+          <label for="jobTitle">Job Title:</label>
+          <input
+            type="text"
+            id="jobTitle"
+            placeholder="Enter your job title"
+            required
+          />
+
+          <label for="company">Company Name:</label>
+          <input
+            type="text"
+            id="company"
+            placeholder="Enter your company name"
+            required
+          />
+
           <h2>Skills</h2>
-          <label for="skills">Skills:</label>
-          <textarea id="skills" required></textarea>
-      
+
+          <label for="skills">Skills (Comma Separated):</label>
+          <input
+            type="text"
+            id="skills"
+            placeholder="Enter your skills"
+            required
+          />
+
           <button type="submit">Generate Resume</button>
         </form>
-        
-        <div id="resumeDisplay">
-          <!-- Generated resume will be displayed here -->
-        </div>
-      </div>
-      
 
+        <!-- This is where the dynamically generated resume will be displayed -->
+        <div id="generatedResume"></div>
+      </div>
+    </main>
     <script src="dist/index.js"></script>
   </body>
 </html>

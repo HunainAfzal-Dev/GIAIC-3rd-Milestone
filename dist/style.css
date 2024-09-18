@@ -1,120 +1,170 @@
-::selection{
-    background-color: orange;    
-    color: black;
-}
-
+/* General Styling */
 body {
-    font-family: "Playpen Sans", cursive;
-    margin: 0;
-    padding: 0;
+    font-family: 'Playpen Sans', sans-serif;
     background-image: url(./assets/pexels-rickyrecap-2061223.jpg);
+    margin: 0;
     background-position: center;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    width: 100vw;
+    background-attachment: fixed;
+}
+::-webkit-scrollbar{
+    display: none;
 }
 
-#resume {
-    width: 60%;
-    padding: 20px;
-    border: 1px solid #ffffff52;
-    border-radius: 10px;
-    background-color: #00151379;
-    backdrop-filter: blur(10px);
-    color: white;
-}
-
-section {
-    margin-bottom: 20px;
-}
-.profile-image{
-    width: 180px;
-    height: 180px;
-    border-radius: 100%;
-    border: 1px solid #ffffff;
-    object-fit: cover;
-}
-.resume_Top{
-    display: flex;
-    gap: 5%;
-    align-items: center;
-}
-
-h1{
-    color: orange;
-}
-.resume_bottom{
-    display: flex;
-    flex-wrap: wrap;
-    width: 60%;
-    gap:  5%;
-    justify-content: space-between;
-}
-.skills-list{
-    display: flex ;
-    flex-wrap: wrap;
-    gap:  4%;
-}
-
- 
-  /* form */
-  .container {
-    max-width: 800px;
-    color: #ffffff;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  form {
+.main-wrapper{
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
-  }
-  label, input, textarea {
-    margin-bottom: 10px;
-  }
-  #resumeDisplay {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    align-items: center;
+    padding: 20px;
   }
   
+  .container {
+    margin-top: 30px;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.308);
+    color: white;
+    width: 60%;
 
-
-@media (max-width: 767px) {
-#resume {
-    width: 90%;
-    padding: 10px;
- }
- .profile-image{
-    width: 150px;
-    height: 140px;
-}
-.resume_bottom{
-    display: flex;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    font-family: 'Playpen Sans', sans-serif;
+    letter-spacing: 1px;
     width: 100%;
-    gap:  5%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid orange;
+    outline: none;
+    font-size: 17px;
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+    background-color: transparent;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Resume Styling */
+  #resume {
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.308);
+    color: white;
+    width: 60%;
+  }
+  h1{
+    color: orange;
+    
+  }
+  
+  .resume_Top {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    border: 3px dashed orange;
+  }
+  
+  #personal-info {
+    font-size: 1.2em;
+  }
+  
+  #personal-info h1 {
+    font-size: 1.8em;
+    /* margin-bottom: 5px; */
+  }
+  
+  .resume_bottom {
+    width: 60%;
+    margin-top: 20px;
+    display: flex;
     justify-content: space-between;
-}
-h1{
-    font-size: 16px;
-}
-h1{
-    font-size: 16px;
-}
-h3{
-    font-size: 14px;
-}
-.resume_bottom p{
-    font-size: 12px;
-}
-.skills-list{
-    display: flex ;
+  }
+  
+  #skills ul {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap:  10%;
-    font-size: 14px;
-}
-}
+    padding-left: 20px;
+  }
+  
+  #skills li {
+    list-style-type: disc;
+  }
+
+    section {
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styling */
+  #resumeForm {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  
+  .fields-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    .fields-main {
+      grid-template-columns: 1fr;
+    }
+    #resume {
+        width: 90%;
+      }
+    .resume_bottom {
+        width: 100%;
+      }
+      .container{
+        width: 90%;
+      }
+      h1{
+        font-size: 20px;
+      }
+      h3{
+        font-size: 16px;
+      }
+
+  }
+  
+  #generatedResume {
+    margin-top: 30px;
+  }
+  
