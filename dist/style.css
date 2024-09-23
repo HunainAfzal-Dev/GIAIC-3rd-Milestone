@@ -113,7 +113,7 @@ body {
     justify-content: space-between;
   }
   
-  #skills ul {
+  #skillsSection ul {
     width: 60%;
     display: flex;
     justify-content: space-between;
@@ -121,7 +121,7 @@ body {
     padding-left: 20px;
   }
   
-  #skills li {
+  #skillsSection li {
     list-style-type: disc;
   }
 
