@@ -14,14 +14,30 @@
   </head>
   <body>
     <main class="main-wrapper">
-      <div id="resume">
+      <!-- resume -->
+      <div id="resume" class="hidden">
+        <!-- <button >Regenarate Resume</button> -->
+        <button class="button">
+          <div class="button-box">
+            <span class="button-elem">
+              <svg viewBox="0 0 46 40" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"
+                ></path>
+              </svg>
+            </span>
+            <span class="button-elem">
+              <svg viewBox="0 0 46 40">
+                <path
+                  d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"
+                ></path>
+              </svg>
+            </span>
+          </div>
+        </button>
         <div class="resume_Top">
-          <img
-            src="./assets/myProfile.webp"
-            class="profile-image"
-            alt="Profile Picture"
-          />
-         <section id="personal-info">            
+          <img src="" class="profile-image" alt="Profile Picture" />
+          <section id="personal-info">
             <h1>Hunain Afzal</h1>
             <p>kajhunain@gmail.com</p>
             <p>03** 1245635</p>
@@ -53,13 +69,14 @@
       </div>
 
       <!-- form  -->
-      <div class="container">
-        <h1>Dynamic Resume Builder</h1>
-
-        <form id="resumeForm">
+      <div class="container" id="resumeForm">
+        <form>
+          <h1>Dynamic Resume Builder</h1>
           <h2>Personal Information</h2>
           <div class="personal-info fields-main">
             <div>
+              <label for="profileImage">Profile-image</label>
+              <input type="file" id="profileImage" accept="image/*" required />
               <label for="name">Name:</label>
               <input
                 type="text"
@@ -142,7 +159,7 @@
         </form>
 
         <!-- This is where the dynamically generated resume will be displayed -->
-        <div id="generatedResume"></div>
+        <!-- <div id="generatedResume"></div> -->
       </div>
     </main>
     <script src="index.js"></script>
