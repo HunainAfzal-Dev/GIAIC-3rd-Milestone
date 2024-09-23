@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Images</title>
+  <style>
+    /* Default image for desktop */
+.image-container {
+  text-align: center;
+}
+
+.desktop-img {
+  width: 100%;
+  max-width: 1200px;
+  display: block;
+}
+
+.mobile-img {
+  display: none;
+}
+
+/* Image for mobile using media query */
+@media only screen and (max-width: 768px) {
+  .desktop-img {
+    display: none;
+  }
+
+  .mobile-img {
+    display: block;
+    width: 100%;
+    max-width: 768px;
+  }
+}
+
+  </style>
+
+</head>
+<body>
+  <div class="image-container">
+    <img src="/web.jpg" alt="Desktop Image" class="desktop-img">
+    <img src="mobile(1).jpg" alt="Mobile Image" class="mobile-img">
+  </div>
+</body>
+</html>

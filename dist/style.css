@@ -23,7 +23,7 @@ body {
 .container {
   margin-top: 30px;
   background-color: transparent;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(60px);
   padding: 20px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.308);
@@ -143,7 +143,7 @@ button:hover {
 /* Resume Styling */
 #resume {
   background-color: transparent;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(60px);
   padding: 20px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.308);

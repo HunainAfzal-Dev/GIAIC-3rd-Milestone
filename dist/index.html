@@ -73,10 +73,10 @@
         <form>
           <h1>Dynamic Resume Builder</h1>
           <h2>Personal Information</h2>
+          <label for="profileImage">Profile-image</label>
+          <input type="file" id="profileImage" accept="image/*" required />
           <div class="personal-info fields-main">
             <div>
-              <label for="profileImage">Profile-image</label>
-              <input type="file" id="profileImage" accept="image/*" required />
               <label for="name">Name:</label>
               <input
                 type="text"
@@ -128,22 +128,26 @@
           </div>
 
           <h2>Work Experience</h2>
-
-          <label for="jobTitle">Job Title:</label>
-          <input
-            type="text"
-            id="jobTitle"
-            placeholder="Enter your job title"
-            required
-          />
-
-          <label for="company">Company Name:</label>
-          <input
-            type="text"
-            id="company"
-            placeholder="Enter your company name"
-            required
-          />
+          <div class="fields-main">
+            <div>
+              <label for="jobTitle">Job Title:</label>
+              <input
+                type="text"
+                id="jobTitle"
+                placeholder="Enter your job title"
+                required
+              />
+            </div>
+            <div>
+              <label for="company">Company Name:</label>
+              <input
+                type="text"
+                id="company"
+                placeholder="Enter your company name"
+                required
+              />
+            </div>
+          </div>
 
           <h2>Skills</h2>
 
