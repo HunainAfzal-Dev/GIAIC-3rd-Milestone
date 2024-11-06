@@ -39,6 +39,7 @@ resumeForm.addEventListener("submit", function (e) {
         skills: document.getElementById("skills").value.split(",").map(function (skill) { return skill.trim(); }),
         profileImage: profileImageDisplay.src, // Include profile image URL
     };
+    console.log(formData);
     // Save data to localStorage
     localStorage.setItem("resumeData", JSON.stringify(formData));
     // Update resume with form data
@@ -86,3 +87,4 @@ editResumeBtn.addEventListener("click", function () {
     profileImageDisplay.src = data.profileImage || "./assets/myProfile.webp";
     generateResumeBtn === null || generateResumeBtn === void 0 ? void 0 : generateResumeBtn.classList.remove("hidden");
 });
+console.log("hello");

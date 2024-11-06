@@ -101,3 +101,6 @@ editResumeBtn.addEventListener("click", () => {
   generateResumeBtn?.classList.remove("hidden");
 });
 
+
+
+console.log("hello")

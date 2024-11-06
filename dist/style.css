@@ -9,11 +9,11 @@
 :root {
   --primary-color: #000000;                /* Black Background */
   --accent-color: #E0E0E0;                 /* Light Gray for Accents */
-  --background-color: #E0E0E0;             /* Very Dark Gray for Secondary Background */
-  --heading-color: #000000;                /* Soft White for Headings */
-  --text-color: #333333;                   /* Light Gray for Body Text */
+  --background-color: #1A1A1A;             /* Very Dark Gray for Secondary Background */
+  --heading-color: #F5F5F5;                /* Soft White for Headings */
+  --text-color: #D3D3D3;                   /* Light Gray for Body Text */
   --border-color: #333333;                 /* Dark Gray Border */
-  --button-hover-bg: #333333;              /* Light Gray on Hover */
+  --button-hover-bg: #E0E0E0;              /* Light Gray on Hover */
   --button-border-color: #333333;          /* Dark Gray Border */
   --button-inner-border-color: #FFFFFF;    /* White Inner Border */
 }
@@ -82,10 +82,11 @@ button {
   font-size: 16px;
   transition: all 0.3s ease-in-out;
   margin-top: 5px;
+  color: var(--button-hover-bg);
 }
 
 button:hover {
-  color: white;
+  color: var(--primary-color);
   background-color: var(--button-hover-bg);
 }
 
