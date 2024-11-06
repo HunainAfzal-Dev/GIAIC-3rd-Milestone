@@ -7,19 +7,21 @@
   --button-inner-border-color: white;
 } */
 :root {
-  --primary-color: #333333;                 /* Charcoal */
-  --accent-color: #B87333;                  /* Warm Copper */
-  --background-color: #F2F2F2;              /* Light Gray */
-  --text-color: #1A1A1A;                    /* Almost Black */
-  --border-color: #333333;                  /* Charcoal Border */
-  --button-hover-bg: #B87333;               /* Copper on Hover */
-  --button-border-color: #333333;           /* Charcoal Border */
-  --button-inner-border-color: #FFFFFF;     /* White Inner Border */
+  --primary-color: #000000;                /* Black Background */
+  --accent-color: #E0E0E0;                 /* Light Gray for Accents */
+  --background-color: #E0E0E0;             /* Very Dark Gray for Secondary Background */
+  --heading-color: #000000;                /* Soft White for Headings */
+  --text-color: #333333;                   /* Light Gray for Body Text */
+  --border-color: #333333;                 /* Dark Gray Border */
+  --button-hover-bg: #333333;              /* Light Gray on Hover */
+  --button-border-color: #333333;          /* Dark Gray Border */
+  --button-inner-border-color: #FFFFFF;    /* White Inner Border */
 }
+
 
 body {
   font-family: "Playpen Sans", sans-serif !important;
-  background: var(--background-color) ;
+  background: var(--background-color);
   color: var(--text-color);
   margin: 0;
   background-position: center;
@@ -70,6 +72,7 @@ input {
 }
 
 button {
+  font-family: "Playpen Sans", sans-serif ;
   background-color: transparent;
   backdrop-filter: blur(30px);
   padding: 10px 20px;
@@ -82,6 +85,7 @@ button {
 }
 
 button:hover {
+  color: white;
   background-color: var(--button-hover-bg);
 }
 
@@ -169,7 +173,7 @@ button:hover {
 }
 
 h1 {
-  color: var(--primary-color);
+  color: var(--heading-color);
 }
 
 .resume_Top {

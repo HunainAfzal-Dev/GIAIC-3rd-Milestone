@@ -13,9 +13,10 @@ const storedData = localStorage.getItem("resumeData");
 if (storedData) {
   const data = JSON.parse(storedData);
   updateResume(data);
-} else {
-  // Show the initial dummy resume if no data in localStorage
+} 
+else {
   resumeSection?.classList.remove("hidden");
+  // Show the initial dummy resume if no data in localStorage
 }
 
 // Show form when "Generate Resume" is clicked
@@ -35,10 +36,13 @@ resumeForm.addEventListener("submit", (e) => {
     email: (document.getElementById("email") as HTMLInputElement).value,
     phone: (document.getElementById("phone") as HTMLInputElement).value,
     education: (document.getElementById("degree") as HTMLInputElement).value,
+    institution: (document.getElementById("institution") as HTMLInputElement).value,
     experience: (document.getElementById("jobTitle") as HTMLInputElement).value,
+    company: (document.getElementById("company") as HTMLInputElement).value,
     skills: (document.getElementById("skills") as HTMLInputElement).value.split(",").map((skill) => skill.trim()),
     profileImage: profileImageDisplay.src, // Include profile image URL
   };
+  console.log(formData)
 
   // Save data to localStorage
   localStorage.setItem("resumeData", JSON.stringify(formData));
@@ -76,45 +80,24 @@ function updateResume(data: any) {
   const experienceElement = document.querySelector("#experience h3")!;
   (experienceElement as HTMLElement).innerText = data.experience;
 
-  // Update the profile image if available
-  const profileImage = document.getElementById("profile-image-display") as HTMLImageElement;
-  if (data.profileImage) {
-    profileImage.src = data.profileImage;
-  }
+  // Update profile image
+  profileImageDisplay.src = data.profileImage;
 }
 
-// Function to handle profile image update
-function handleImageUpload(event: Event) {
-  const file = (event.target as HTMLInputElement).files?.[0];
-  if (file) {
-    const reader = new FileReader();
-
-    reader.onloadend = function () {
-      // Update the image display source with the uploaded file
-      profileImageDisplay.src = reader.result as string;
-    };
-
-    reader.readAsDataURL(file);
-  }
-}
-
-
-// Show form when "Edit Resume" is clicked
+// Edit resume button logic
 editResumeBtn.addEventListener("click", () => {
-  // Populate form with existing data
+  resumeSection?.classList.add("hidden");
+  formSection?.classList.remove("hidden");
   const data = JSON.parse(localStorage.getItem("resumeData") || "{}");
   (document.getElementById("name") as HTMLInputElement).value = data.name || "";
   (document.getElementById("email") as HTMLInputElement).value = data.email || "";
   (document.getElementById("phone") as HTMLInputElement).value = data.phone || "";
   (document.getElementById("degree") as HTMLInputElement).value = data.education || "";
+  (document.getElementById("institution") as HTMLInputElement).value = data.institution || "";
   (document.getElementById("jobTitle") as HTMLInputElement).value = data.experience || "";
-  (document.getElementById("skills") as HTMLInputElement).value = data.skills.join(", ") || "";
-
-  // Set the profile image if available
-  if (data.profileImage) {
-    profileImageDisplay.src = data.profileImage;
-  }
-
-  resumeSection?.classList.add("hidden");
-  formSection?.classList.remove("hidden");
+  (document.getElementById("company") as HTMLInputElement).value = data.company || "";
+  (document.getElementById("skills") as HTMLInputElement).value = data.skills?.join(", ") || "";
+  profileImageDisplay.src = data.profileImage || "./assets/myProfile.webp";
+  generateResumeBtn?.classList.remove("hidden");
 });
+
