@@ -1,19 +1,13 @@
 {
-  "name": "milestone-1",
+  "name": "dynamic-resume-builder",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A dynamic resume builder using TypeScript.",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "live-server dist",
-    "start": "npm run build && npm run dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "lite-server"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "live-server": "^1.2.2",
-    "typescript": "^5.6.2"
+    "lite-server": "^2.5.4",
+    "typescript": "^5.0.0"
   }
 }

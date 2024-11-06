@@ -1,139 +1,120 @@
-interface PersonalInfo {
-  name: string;
-  email: string;
-  phone: string;
+// Elements
+const profileImageInput = document.getElementById("profileImage") as HTMLInputElement;
+const profileImageDisplay = document.getElementById("profile-image-display") as HTMLImageElement;
+const resumeSection = document.getElementById("resume");
+const formSection = document.getElementById("resumeForm");
+const generateResumeBtn = document.getElementById("generateResumeBtn")!;
+const resumeForm = document.getElementById("resumeForm")!;
+const downloadResumeBtn = document.getElementById("downloadResume")!;
+const editResumeBtn = document.getElementById("editResumeBtn")!; // Edit button
+
+// Check if there's any data in localStorage
+const storedData = localStorage.getItem("resumeData");
+if (storedData) {
+  const data = JSON.parse(storedData);
+  updateResume(data);
+} else {
+  // Show the initial dummy resume if no data in localStorage
+  resumeSection?.classList.remove("hidden");
 }
 
-interface Education {
-  degree: string;
-  institution: string;
-}
+// Show form when "Generate Resume" is clicked
+generateResumeBtn.addEventListener("click", () => {
+  resumeSection?.classList.add("hidden");
+  formSection?.classList.remove("hidden");
+  generateResumeBtn?.classList.add("hidden")
+});
 
-interface Experience {
-  jobTitle: string;
-  company: string;
-}
+// Handle form submission
+resumeForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-interface ResumeData {
-  personalInfo: PersonalInfo;
-  education: Education;
-  experience: Experience;
-  skills: string[];
-  profileImage: string;
-}
-
-function getFormData(): ResumeData {
-  const name = (document.getElementById("name") as HTMLInputElement).value;
-  const email = (document.getElementById("email") as HTMLInputElement).value;
-  const phone = (document.getElementById("phone") as HTMLInputElement).value;
-
-  const degree = (document.getElementById("degree") as HTMLInputElement).value;
-  const institution = (
-    document.getElementById("institution") as HTMLInputElement
-  ).value;
-
-  const jobTitle = (document.getElementById("jobTitle") as HTMLInputElement)
-    .value;
-  const company = (document.getElementById("company") as HTMLInputElement)
-    .value;
-
-  const skillsInput = (document.getElementById("skills") as HTMLInputElement)
-    .value;
-  const skills = skillsInput
-    ? skillsInput.split(",").map((skill) => skill.trim())
-    : [];
-
-  const profileImageInput = (
-    document.getElementById("profileImage") as HTMLInputElement
-  ).files![0];
-  const profileImage = profileImageInput
-    ? URL.createObjectURL(profileImageInput)
-    : "";
-
-  return {
-    profileImage,
-    personalInfo: { name, email, phone },
-    education: { degree, institution },
-    experience: { jobTitle, company },
-    skills,
+  // Get form data
+  const formData = {
+    name: (document.getElementById("name") as HTMLInputElement).value,
+    email: (document.getElementById("email") as HTMLInputElement).value,
+    phone: (document.getElementById("phone") as HTMLInputElement).value,
+    education: (document.getElementById("degree") as HTMLInputElement).value,
+    experience: (document.getElementById("jobTitle") as HTMLInputElement).value,
+    skills: (document.getElementById("skills") as HTMLInputElement).value.split(",").map((skill) => skill.trim()),
+    profileImage: profileImageDisplay.src, // Include profile image URL
   };
-}
 
-function renderResume(resumeData: ResumeData) {
-  const profileImageSection = document.querySelector(
-    ".profile-image"
-  ) as HTMLImageElement;
-  profileImageSection.src = resumeData.profileImage;
+  // Save data to localStorage
+  localStorage.setItem("resumeData", JSON.stringify(formData));
 
-  const personalInfoSection = document.getElementById("personal-info")!;
-  personalInfoSection.innerHTML = `
-    <h1>${resumeData.personalInfo.name}</h1>
-    <p>${resumeData.personalInfo.email}</p>
-    <p>${resumeData.personalInfo.phone}</p>
-    `;
+  // Update resume with form data
+  updateResume(formData);
 
-  const educationSection = document.getElementById("education")!;
+  // Hide form and show resume
+  formSection?.classList.add("hidden");
+  resumeSection?.classList.remove("hidden");
+});
 
-  educationSection.innerHTML = `
-    <h1>Education</h1>  
-    <p>${resumeData.education.degree}</p>
-    <p>${resumeData.education.institution}</p>
-    `;
+// Function to update the resume with form data
+function updateResume(data: any) {
+  const nameElement = document.querySelector("#resume h1")!;
+  (nameElement as HTMLElement).innerText = data.name;
 
-  const experienceSection = document.getElementById("experience")!;
-  experienceSection.innerHTML = `
-    <h1>Work Experience</h1>
-    <h3>${resumeData.experience.jobTitle}</h3>
-    <p>${resumeData.experience.company}</p>
-  `;
+  const emailElement = document.querySelector("#resume p")!;
+  (emailElement as HTMLElement).innerText = data.email;
 
-  const skillsSection = document.querySelector(".skills-list")!;
-  skillsSection.innerHTML = "";
+  const phoneElement = document.querySelector("#resume p:nth-of-type(2)")!;
+  (phoneElement as HTMLElement).innerText = data.phone;
 
-  if (resumeData.skills.length > 0) {
-    resumeData.skills.forEach((skill) => {
-      const li = document.createElement("li");
-      li.textContent = skill;
-      skillsSection.appendChild(li);
-    });
-  } else {
+  const skillsList = document.querySelector("#skillsSection ul")!;
+  skillsList.innerHTML = ""; // Clear existing skills
+  data.skills.forEach((skill: string) => {
     const li = document.createElement("li");
-    li.textContent = "No Skills Provided";
-    skillsSection.appendChild(li);
+    li.innerText = skill;
+    skillsList.appendChild(li);
+  });
+
+  const educationElement = document.querySelector("#education h3")!;
+  (educationElement as HTMLElement).innerText = data.education;
+
+  const experienceElement = document.querySelector("#experience h3")!;
+  (experienceElement as HTMLElement).innerText = data.experience;
+
+  // Update the profile image if available
+  const profileImage = document.getElementById("profile-image-display") as HTMLImageElement;
+  if (data.profileImage) {
+    profileImage.src = data.profileImage;
   }
 }
 
-const form = document.getElementById("resumeForm");
-const generatedResume = document.getElementById("resume")!;
-  generatedResume.style.display = "none";
+// Function to handle profile image update
+function handleImageUpload(event: Event) {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
+    const reader = new FileReader();
 
+    reader.onloadend = function () {
+      // Update the image display source with the uploaded file
+      profileImageDisplay.src = reader.result as string;
+    };
 
-form?.addEventListener("submit", (e: Event) => {
-  e.preventDefault();
-
-  const formData = getFormData();
-  renderResume(formData);
-
-  form.style.display = "none";
-  generatedResume.style.display = "block";
-});
-
-const toggleButton = document.querySelector(".button");
-
-function toggleForm() {
-    toggleButton?.addEventListener('click', () => {
-        if (form) {
-            form.style.display = "block";
-            generatedResume.style.display = "none";
-        } 
-         if (generatedResume) {
-            generatedResume.style.display = "none";
-        }
-    });
+    reader.readAsDataURL(file);
+  }
 }
 
 
-// Call the toggleForm function to set up the event listener
-toggleForm();
+// Show form when "Edit Resume" is clicked
+editResumeBtn.addEventListener("click", () => {
+  // Populate form with existing data
+  const data = JSON.parse(localStorage.getItem("resumeData") || "{}");
+  (document.getElementById("name") as HTMLInputElement).value = data.name || "";
+  (document.getElementById("email") as HTMLInputElement).value = data.email || "";
+  (document.getElementById("phone") as HTMLInputElement).value = data.phone || "";
+  (document.getElementById("degree") as HTMLInputElement).value = data.education || "";
+  (document.getElementById("jobTitle") as HTMLInputElement).value = data.experience || "";
+  (document.getElementById("skills") as HTMLInputElement).value = data.skills.join(", ") || "";
 
+  // Set the profile image if available
+  if (data.profileImage) {
+    profileImageDisplay.src = data.profileImage;
+  }
 
+  resumeSection?.classList.add("hidden");
+  formSection?.classList.remove("hidden");
+});
