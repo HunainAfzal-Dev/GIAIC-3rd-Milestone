@@ -18,7 +18,7 @@
       <div id="resume" class="container">
         <div class="resume_Top">
           <img
-            id="profile-image-display"
+            id="profileImageDisplay"
             src="./assets/myProfile.webp"
             class="profile-image"
             alt="Profile Picture"
@@ -52,19 +52,19 @@
             <li>NextJs</li>
           </ul>
         </section>
-        <button id="downloadResume">Download Resume</button>
-        <button id="editResumeBtn">Edit Resume</button>
+        <!-- <button id="downloadResume">Download Resume</button>
+        <button id="editResumeBtn">Edit Resume</button> -->
         <!-- Edit button -->
       </div>
       <button id="generateResumeBtn">Generate Your Resume</button>
       <!-- Form to Generate Resume -->
-      <div id="resumeForm" class="container hidden">
+      <div id="resumeWrapper" class="container hidden">
         <form id="resumeForm">
           <h1>Dynamic Resume Builder</h1>
           <h2>Personal Information</h2>
           <div>
             <label for="profileImage">Profile-image</label>
-            <input type="file" id="profileImage" accept="image/*" required />
+            <input type="file" id="profileImageInput" accept="image/*" required />
             <label for="name">Name:</label>
             <input
               type="text"
@@ -147,10 +147,10 @@
             required
           />
 
-          <button id="generateResumeBtn" type="submit">Generate Resume</button>
+          <button type="submit">Generate Resume</button>
         </form>
       </div>
-      <script src="index.js"></script>
     </main>
+    <script src="index.js"></script>
   </body>
 </html>
